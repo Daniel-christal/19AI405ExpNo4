@@ -1,6 +1,6 @@
 <h1>ExpNo 4 : Implement A* search algorithm for a Graph</h1> 
-<h3>Name: Saravanan N</h3>
-<h3>Register Number/Staff Id: TSML006</h3>
+<h3>Name: Daniel.C</h3>
+<h3>Register Number: 212223240023</h3>
 <H3>Aim:</H3>
 <p>To ImplementA * Search algorithm for a Graph using Python 3.</p>
 <H3>Algorithm:</H3>
@@ -49,16 +49,70 @@
     end (while loop)
 
 ``````
+# PROGRAM:
+```
+import heapq
 
-<hr>
-<h2>Sample Graph I</h2>
-<hr>
+class Graph:
+    def __init__(self):
+        self.vertices = {}
 
-![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/b1377c3f-011a-4c0f-a843-516842ae056a)
+    def add_vertex(self, vertex, edges):
+        self.vertices[vertex] = edges
 
-<hr>
-<h2>Sample Input</h2>
-<hr>
+    def heuristic(self, node, goal):
+        # A simple heuristic function, you may modify this according to your problem
+        return abs(node[0] - goal[0]) + abs(node[1] - goal[1])
+
+    def a_star_search(self, start, goal):
+        open_set = []
+        heapq.heappush(open_set, (0, start))
+        came_from = {}
+        g_score = {vertex: float('inf') for vertex in self.vertices}
+        g_score[start] = 0
+        f_score = {vertex: float('inf') for vertex in self.vertices}
+        f_score[start] = self.heuristic(start, goal)
+
+        while open_set:
+            current = heapq.heappop(open_set)[1]
+
+            if current == goal:
+                path = []
+                while current in came_from:
+                    path.append(current)
+                    current = came_from[current]
+                path.append(start)
+                return path[::-1]
+
+            for neighbor in self.vertices[current]:
+                tentative_g_score = g_score[current] + self.vertices[current][neighbor]
+                if tentative_g_score < g_score[neighbor]:
+                    came_from[neighbor] = current
+                    g_score[neighbor] = tentative_g_score
+                    f_score[neighbor] = tentative_g_score + self.heuristic(neighbor, goal)
+                    if neighbor not in [item[1] for item in open_set]:
+                        heapq.heappush(open_set, (f_score[neighbor], neighbor))
+        return None
+if __name__ == "__main__":
+    graph = Graph()
+    graph.add_vertex('A', {'B': 5, 'C': 10})
+    graph.add_vertex('B', {'A': 5, 'D': 8})
+    graph.add_vertex('C', {'A': 10, 'D': 5})
+    graph.add_vertex('D', {'B': 8, 'C': 5})
+
+    start = 'A'
+    goal = 'D'
+
+    path = graph.a_star_search(start, goal)
+    if path:
+        print("Path found:", path)
+    else:
+        print("Path not found")
+```
+# SAMPLE GRAPH 1:
+![image](https://github.com/Daniel-christal/19AI405ExpNo4/assets/145742847/f733d809-c5f7-4985-ae95-42c9d80889d8)
+
+# SAMPLE INPUT:
 10 14 <br>
 A B 6 <br>
 A F 3 <br>
@@ -79,12 +133,11 @@ B 8 <br>
 C 5 <br>
 D 7 <br>
 E 3 <br>
-F 6 <br>
-G 5 <br>
-H 3 <br>
-I 1 <br>
-J 0 <br>
-<hr>
+F 6 
+G 5 
+H 3 
+I 1 
+J 0 
 <h2>Sample Output</h2>
 <hr>
 Path found: ['A', 'F', 'G', 'I', 'J']
