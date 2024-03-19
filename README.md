@@ -143,7 +143,7 @@ J 0 <br>
 Path found: ['A', 'F', 'G', 'I', 'J']
 
 # SAMPLE GRAPH 2:
-![image](https://github.com/Daniel-christal/19AI405ExpNo4/assets/145742847/be68c150-8802-4f5e-ad35-61ada040e205
+![image](https://github.com/Daniel-christal/19AI405ExpNo4/assets/145742847/089ee65b-a4f0-4e9a-b11d-0331f92d5b25)
 
 # SAMPLE INPUT:
 6 6 <br>
