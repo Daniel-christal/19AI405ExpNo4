@@ -133,26 +133,19 @@ B 8 <br>
 C 5 <br>
 D 7 <br>
 E 3 <br>
-F 6 
-G 5 
-H 3 
-I 1 
-J 0 
-<h2>Sample Output</h2>
-<hr>
+F 6 <br>
+G 5 <br>
+H 3 <br>
+I 1 <br>
+J 0 <br>
+
+# SAMPLE OUTPUT
 Path found: ['A', 'F', 'G', 'I', 'J']
 
+# SAMPLE GRAPH 2:
+![image](https://github.com/Daniel-christal/19AI405ExpNo4/assets/145742847/be68c150-8802-4f5e-ad35-61ada040e205
 
-<hr>
-<h2>Sample Graph II</h2>
-<hr>
-
-![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/acbb09cb-ed39-48e5-a59b-2f8d61b978a3)
-
-
-<hr>
-<h2>Sample Input</h2>
-<hr>
+# SAMPLE INPUT:
 6 6 <br>
 A B 2 <br>
 B C 1 <br>
@@ -166,7 +159,9 @@ C 99 <br>
 E 7 <br>
 D 1 <br>
 G 0 <br>
-<hr>
-<h2>Sample Output</h2>
-<hr>
+
+# SAMPLE OUTPUT:
 Path found: ['A', 'E', 'D', 'G']
+
+# RESULT:
+Thus ,the A* implementation is successfull executed.
